@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cleanup_utils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/18 13:22:36 by sniemela          #+#    #+#             */
+/*   Updated: 2025/01/18 13:22:37 by sniemela         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 void	free_null(char **ptr)
@@ -6,8 +18,6 @@ void	free_null(char **ptr)
 	*ptr = NULL;
 }
 
-/* If memory allocation for 2D pipe array fails at any point,
-free all previously allocated pipes. */
 void	free_pipes(t_mini *shell, int i)
 {
 	while (i >= 0)

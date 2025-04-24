@@ -1,7 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   file_handler.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/18 13:23:24 by sniemela          #+#    #+#             */
+/*   Updated: 2025/01/18 13:23:26 by sniemela         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-/*Attempts to open input file. 
-Returns fd_out on success, -2 on failure with corresponding error message.*/
 int	open_infile(t_mini *shell, char *infile)
 {
 	int	input_fd;
@@ -23,8 +33,6 @@ int	open_infile(t_mini *shell, char *infile)
 	return (input_fd);
 }
 
-/*Attempts to open output file. 
-Returns fd_out on success, -2 on failure with corresponding error message.*/
 int	open_outfile(t_mini *shell, char *outfile)
 {
 	int	fd_out;
@@ -49,8 +57,6 @@ int	open_outfile(t_mini *shell, char *outfile)
 	return (fd_out);
 }
 
-/*Attempts to open output append file. 
-Returns fd_out on success, -2 on failure with corresponding error message.*/
 int	open_append_file(t_mini *shell, char *outfile)
 {
 	int	fd_out;

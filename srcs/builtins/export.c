@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   export.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: prynty <prynty@student.hive.fi>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/18 13:20:00 by prynty            #+#    #+#             */
+/*   Updated: 2025/01/18 13:27:59 by prynty           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 int	valid_export(char *str)
@@ -62,7 +74,7 @@ int	export_variable(t_mini *shell, char *arg, char **temp)
 			i++;
 		}
 		env_set_variable(shell, arg, "");
-		remove_eq(shell, arg);
+		remove_equal_char(shell, arg);
 		return (TRUE);
 	}
 	*value++ = '\0';

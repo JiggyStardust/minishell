@@ -1,28 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/18 13:21:43 by sniemela          #+#    #+#             */
+/*   Updated: 2025/01/18 13:21:47 by sniemela         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 volatile sig_atomic_t	g_mrworldwide = 0;
-
-//THIS IS FOR LARGE MINISHELL TESTER, REPLACE THIS SETUP_INPUT 
-//WITH THE ONE BELOW BEFORE RUNNING THE TESTER
-// static char	*setup_input(t_mini *shell)
-// {
-// 	char	*input;
-// 	char	prompt[1024];
-
-// 	input = NULL;
-// 	get_prompt(shell, prompt, sizeof(prompt));
-// 	if (isatty(fileno(stdin)))
-// 		input = readline(prompt);
-// 	else
-// 	{
-// 		char	*line;
-// 		line = get_next_line(fileno(stdin));
-// 		input = ft_strtrim(line, "\n");
-// 		free(line);
-// 	}
-// 	add_history(input);
-// 	return (input);
-// }
 
 static char	*setup_input(t_mini *shell)
 {

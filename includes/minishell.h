@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: prynty <prynty@student.hive.fi>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/18 13:27:16 by sniemela          #+#    #+#             */
+/*   Updated: 2025/01/18 14:20:18 by prynty           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
@@ -41,7 +53,7 @@ void	env_unset_variable(char **env, char *variable);
 int		builtin_unset(t_mini *shell, char **args);
 
 //environment/env_utils.c
-void	remove_eq(t_mini *shell, char *arg);
+void	remove_equal_char(t_mini *shell, char *arg);
 int		env_set_cwd(t_mini *shell);
 char	*env_get_variable(char **env, char *key);
 int		env_update_shlvl(t_mini *shell);
@@ -116,7 +128,7 @@ int		open_outfile(t_mini *shell, char *outfile);
 int		open_append_file(t_mini *shell, char *outfile);
 
 //redirect/heredoc.c
-int		resolve_heredoc(t_cmd *cmd);
+int		resolve_heredoc(t_mini *shell, t_cmd *cmd);
 int		handle_heredoc(char *delimiter);
 
 //setup/setup.c
@@ -128,11 +140,11 @@ void	sig_handler_sigint(int signal);
 void	sig_handler_heredoc(int signal);
 
 //signals/signals.c
-void	sig_heredoc(void *func);
+void	sig_heredoc(void *handler);
 void	sig_ignore(void);
-void	sig_child(void *func);
+void	sig_child(void *handler);
 void	sig_reset(void);
-void	sig_init(void *func);
+void	sig_init(void *handler);
 
 //utils/cleanup.c
 void	cleanup_failure(t_mini *shell, t_cmd *cmd);

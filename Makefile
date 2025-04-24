@@ -86,7 +86,7 @@ $(LIBFT):
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@mkdir -p $(dir $@)
-	@cc -c -g $(CFLAGS) $< -o $@
+	@cc -c $(CFLAGS) $< -o $@
 
 $(NAME): $(OBJS)
 	@cc $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBFT) -o $(NAME)

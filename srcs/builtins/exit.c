@@ -1,19 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exit.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: prynty <prynty@student.hive.fi>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/18 13:19:56 by prynty            #+#    #+#             */
+/*   Updated: 2025/01/18 13:19:57 by prynty           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
-
-// exit without args:
-// prints “exit\n” with exit code 0
-// exit [numeric arg], e.g. exit 5:
-// prints "exit\n", exit code is numeric arg
-// exit w/ >1 arg:
-// “exit\n minishell: exit: too many arguments”, exit code 1
-// exit w/ non numeric args: 
-// “exit\n minishell: exit: [arg]: numeric argument required”, exit code 2
-
-//TO DO:
-//handle "-" and "+"
-//does the shell actually exit when too many args???
-//if exit code given is larger than LONG_MAX, give error numeric arg required
-//reset exit code after 255,
 
 static int	is_numeric(char *str)
 {

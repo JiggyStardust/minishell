@@ -1,28 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   builtins.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: prynty <prynty@student.hive.fi>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/18 13:19:28 by prynty            #+#    #+#             */
+/*   Updated: 2025/01/18 13:19:30 by prynty           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
-
-// int	handle_builtin(int id, t_mini *shell, t_cmd *head, t_cmd *cmd)
-// {
-// 	int	code;
-
-// 	sig_reset();
-// 	code = 0;
-// 	if (id == BUILTIN_CD)
-// 		code = builtin_cd(shell, cmd->cmds);
-// 	if (id == BUILTIN_ECHO)
-// 		code = builtin_echo(cmd->cmds);
-// 	else if (id == BUILTIN_ENV)
-// 		code = builtin_env(shell);
-// 	else if (id == BUILTIN_EXIT)
-// 		code = builtin_exit(shell, head, cmd->cmds);
-// 	else if (id == BUILTIN_EXPORT)
-// 		code = builtin_export(shell, cmd->cmds);
-// 	else if (id == BUILTIN_PWD)
-// 		code = builtin_pwd(shell);
-// 	else if (id == BUILTIN_UNSET)
-// 		code = builtin_unset(shell, cmd->cmds);
-// 	shell->exit_code = code;
-// 	return (code);
-// }
 
 int	handle_builtin(int id, t_mini *shell, t_cmd *head, char **args)
 {

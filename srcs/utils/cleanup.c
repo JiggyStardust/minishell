@@ -1,16 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/18 13:22:23 by sniemela          #+#    #+#             */
+/*   Updated: 2025/01/18 13:22:29 by sniemela         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-/**
- * Cleans up resources and exits the shell on failure.
- *
- * @shell: Pointer to the shell structure containing resources to free.
- * @i: Index of the current command being executed.
- * @ex: Exit status code to terminate the shell with.
- *
- * This function performs a comprehensive cleanup, including closing file
- * descriptors, unlinking heredocs, freeing memory, and releasing resources
- * before terminating the shell with the specified exit status.
- */
 void	cleanup_failure(t_mini *shell, t_cmd *cmd)
 {
 	int	i;
@@ -34,18 +35,6 @@ void	cleanup_failure(t_mini *shell, t_cmd *cmd)
 		clean_commands(cmd);
 }
 
-/**
- * If a child process fails, cleans up resources and
- * exits the child process with the respective exit status.
- *
- * @shell: Pointer to the shell structure containing resources to free.
- * @i: Index of the current command being executed.
- * @exit_status: Exit status code to exit the child process with.
- *
- * This function performs a comprehensive cleanup, including closing file
- * descriptors, unlinking heredocs, freeing memory, and releasing resources
- * before terminating the shell with the specified exit status.
- */
 void	cleanup_failure_child(t_mini *shell, t_cmd *cmd, int exit_status)
 {
 	int	i;
@@ -66,14 +55,6 @@ void	cleanup_failure_child(t_mini *shell, t_cmd *cmd, int exit_status)
 	exit(exit_status);
 }
 
-/**
- * cleanup_success - Cleans up resources upon successful child process
- * execution.
- *
- * @shell: Pointer to the shell structure containing resources to free.
- * @i: Index of the current command being executed.
- * 
- */
 void	cleanup_success(t_mini *shell, t_cmd *cmd)
 {
 	int	i;
@@ -112,14 +93,6 @@ void	cleanup_success_child(t_mini *shell, t_cmd *cmd)
 	shell->cmd_count = 0;
 }
 
-/**
- * cleanup_success - Cleans up resources upon successful child process
- * execution.
- *
- * @shell: Pointer to the shell structure containing resources to free.
- * @i: Index of the current command being executed.
- * 
- */
 void	cleanup_success_exit(t_mini *shell, t_cmd *cmd)
 {
 	int	i;

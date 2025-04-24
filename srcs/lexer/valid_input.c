@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   valid_input.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: prynty <prynty@student.hive.fi>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/18 13:20:22 by sniemela          #+#    #+#             */
+/*   Updated: 2025/01/18 16:13:47 by prynty           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 int	backslash(t_mini *shell, const char *input)
@@ -81,9 +93,10 @@ int	valid_pipes(t_mini *shell, const char *input)
 			continue ;
 		}
 		pipes = 0;
-		while (input[i] && input[i] == '|')
+		while ((input[i] && input[i] == '|') || char_is_whitespace(input[i]))
 		{
-			pipes++;
+			if (input[i] == '|')
+				pipes++;
 			i++;
 		}
 		if (pipes >= 2)
