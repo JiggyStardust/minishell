@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   env_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: prynty <prynty@student.hive.fi>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/18 13:20:14 by prynty            #+#    #+#             */
+/*   Updated: 2025/01/18 13:20:24 by prynty           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-void	remove_eq(t_mini *shell, char *arg)
+void	remove_equal_char(t_mini *shell, char *arg)
 {
 	char	*ptr;
 

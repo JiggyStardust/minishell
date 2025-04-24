@@ -1,19 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   heredoc.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: prynty <prynty@student.hive.fi>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/18 13:23:00 by sniemela          #+#    #+#             */
+/*   Updated: 2025/01/18 14:50:21 by prynty           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-/**
- * heredoc_eof - Handles the EOF condition during a here-document.
- *
- * @shell: Pointer to the shell structure.
- * @line: Line number where the EOF occurred.
- * @lim: Pointer to the lim string expected for the here-document.
- *
- * Generates and prints a warning message to `STDERR_FILENO` indicating that
- * a here-document was terminated by an unexpected EOF instead of the
- * specified lim. The message includes the line number and the expected
- * lim. If memory allocation fails, returns FALSE.
- *
- * Returns TRUE on success or FALSE if memory allocation fails.
- */
 static int	heredoc_eof(int line, char *lim)
 {
 	char	*line_str;
@@ -37,7 +35,7 @@ static int	heredoc_eof(int line, char *lim)
 	return (TRUE);
 }
 
-int	resolve_heredoc(t_cmd *cmd)
+int	resolve_heredoc(t_mini *shell, t_cmd *cmd)
 {
 	t_token	*token;
 	int		i;
@@ -53,6 +51,8 @@ int	resolve_heredoc(t_cmd *cmd)
 				close(cmd->input_fd);
 				cmd->input_fd = -1;
 			}
+			if (!token->next)
+				return (error_file(shell, NULL, AMBIG, 1), FALSE);
 			cmd->input_fd = handle_heredoc(token->next->value);
 			if (cmd->input_fd == -1)
 				return (FALSE);
@@ -64,37 +64,6 @@ int	resolve_heredoc(t_cmd *cmd)
 	return (TRUE);
 }
 
-// static int	empty(void)
-// {
-// 	return (0);
-// }
-
-// static void	heredoc_loop(t_mini *shell, char *line, char *lim, int *pipe_fd)
-// {
-// 	rl_done = 0;
-// 	rl_event_hook = empty;
-// 	while (TRUE)
-// 	{
-// 		line = readline("> ");
-// 		if (line == NULL)
-// 		{
-// 			heredoc_eof(shell, __LINE__, lim);
-// 			break ;
-// 		}
-// 		// else if (rl_done == 1)
-// 		// 	break ;
-// 		if (ft_strncmp(line, lim, ft_strlen(lim)) == 0
-// 			&& line[ft_strlen(lim)] == '\0')
-// 		{
-// 			free(line);
-// 			break ;
-// 		}
-// 		write(pipe_fd[1], line, ft_strlen(line));
-// 		write(pipe_fd[1], "\n", 1);
-// 		rl_clear_history();
-// 		free(line);
-// 	}
-// }
 static void	heredoc_loop(char *line, char *delimiter, int *pipe_fd)
 {
 	write(STDOUT_FILENO, "> ", 2);
@@ -119,19 +88,6 @@ static void	heredoc_loop(char *line, char *delimiter, int *pipe_fd)
 	}
 }
 
-/**
- * Writes input from STDIN into a pipe until a delimiter is encountered.
- *
- * @shell: Pointer to the shell structure.
- * @delimiter: String marking the end of the heredoc input.
- *
- * If heredoc (<<) symbol is encountered at call site, creates a pipe 
- * and prompts the user for input, writing each line into the pipe until
- * the specified delimiter is entered or EOF is reached, closes pipe write
- * end and returns pipe read end for further use.
- * 
- * Returns pipe read end on success, -2 on failure.
- **/
 int	handle_heredoc(char *delimiter)
 {
 	int		pipe_fd[2];

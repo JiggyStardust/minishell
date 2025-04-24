@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   add_missing_spaces.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/18 13:19:42 by sniemela          #+#    #+#             */
+/*   Updated: 2025/01/18 13:28:17 by sniemela         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 char	*add_space(char *input, int end)
@@ -55,7 +67,8 @@ char	*spaces_to_input(char *input, int *i)
 		(*i)++;
 	return (input);
 }
-static int		offset_or_increment(char *input, int i)
+
+static int	offset_or_increment(char *input, int i)
 {
 	if (i == 0 || (i > 0 && !ft_strchr("><", input[i - 1])))
 		return (quote_offset(input + i, input[i]));
@@ -88,31 +101,3 @@ char	*add_missing_spaces(char *input)
 	}
 	return (input);
 }
-// char	*add_missing_spaces(char *input)
-// {
-// 	int		i;
-
-// 	i = 0;
-// 	while (input && input[i])
-// 	{
-// 		move_i_past_whitespace(input, &i);
-// 		while (input[i] && !char_is_whitespace(input[i]))
-// 		{
-// 			if (char_is_quote(input[i]) && !ft_strchr("><", input[i - 1]))
-// 			{
-// 				i += quote_offset(input + i, input[i]);
-// 				continue ;
-// 			}
-// 			if (i > 0 && (ft_strchr("><", input[i])
-// 					|| ft_strchr("><", input[i - 1])))
-// 			{
-// 				input = spaces_to_input(input, &i);
-// 				if (!input)
-// 					return (NULL);
-// 			}
-// 			else
-// 				i++;
-// 		}
-// 	}
-// 	return (input);
-// }
