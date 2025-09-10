@@ -8,8 +8,21 @@
   * Handles built-in commands:
     * ``pwd``, ``echo``, ``cd``, ``exit``, ``unset`` and ``export``
    
-### **- run ``make``**
-### **- run the executable ``minishell``**
-### **- use it like your regular bash**
+## Test it yourself
+
+- Currently most compatible with linux because of usage of GNU readline (especially for rl_clear_history()).
+- To make it work with macOS for example, some adjustments are needed:
+
+  ```
+   #include <readline/history.h>
+
+  change rl_clear_history() to clear_history();
+  ```
+
+#### - run ``make``
+#### - run the executable ``minishell``
 
 ![preview](https://github.com/JiggyStardust/minishell/blob/main/minishell.gif)
+
+#### - use it like your regular bash:
+<img width="600" height="364" alt="image" src="https://github.com/user-attachments/assets/e9d5f5c5-9391-40f0-97a8-0ee8cdcecdfc" />
