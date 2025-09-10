@@ -25,5 +25,7 @@
 ![preview](https://github.com/JiggyStardust/minishell/blob/main/minishell.gif)
 
 #### - use it like your regular bash:
-<img width="600" height="364" alt="image" src="https://github.com/user-attachments/assets/7152fd8e-de28-43fe-bff5-e39e7529a0ce" />
+
+<img width="700" height="425" alt="image" src="https://github.com/user-attachments/assets/cfea3a04-0bdb-4ec6-94fa-cd2147cff76a" />
+
 
